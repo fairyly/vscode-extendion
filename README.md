@@ -18,10 +18,11 @@ npm install -g yo generator-code
 
 ```
 package.json部分关键内容如下（已省略其它）
+
 {
 	// 扩展的激活事件
 	"activationEvents": [
-		"onCommand:extension.sayHello"
+		"onCommand:extension.helloWorld"
 	],
 	// 入口文件
 	"main": "./extension",
@@ -29,13 +30,16 @@ package.json部分关键内容如下（已省略其它）
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.sayHello",
+				"command": "extension.helloWorld",
 				"title": "Hello World"
 			}
 		]
 	}
 }
+
+
 src/extension.js 内容如下：
+
 const vscode = require('vscode');
 
 /**
