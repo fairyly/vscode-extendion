@@ -67,6 +67,47 @@ exports.deactivate = function() {
 };
 ```
 
+## 添加右键菜单和快捷键
+
+>上面由于我们只是注册了命令，没有添加菜单或快捷键，调用不方便，所以我们现在添加一下。
+
+打开package.json，按照下述方式添加：
+
+```
+{
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.helloWorld",
+				"title": "Hello World"
+			}
+		],
+		// 快捷键绑定
+		"keybindings": [
+			{
+				"command": "extension.helloWorld",
+				"key": "ctrl+f10",
+				"mac": "cmd+f10",
+				"when": "editorTextFocus"
+			}
+		],
+		// 设置菜单
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorFocus",
+					"command": "extension.helloWorld",
+					"group": "navigation"
+				}
+			]
+		}
+	}
+}
+```
+
+command 就要和注册的命令保持一致；
+
+然后重新运行插件，在编辑器的右键可以看到菜单
 
 
 ## 参考
